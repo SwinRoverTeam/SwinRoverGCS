@@ -1,0 +1,20 @@
+{
+  "name": "swinrovergcs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./src/main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "electron ."
+  },
+  "author": "",
+  "license": "GPL-3.0",
+  "devDependencies": {
+    "electron": "^29.1.5",
+    "electron-updater": "^6.1.8"
+  },
+  "dependencies": {
+    "electron-builder": "^24.13.3",
+    "electron-is-dev": "^1.2.0"
+  }
+}

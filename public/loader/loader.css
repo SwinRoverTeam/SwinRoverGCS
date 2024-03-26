@@ -1,0 +1,55 @@
+:root {
+    --color-surface-mixed-100: #822311;
+    --color-surface-mixed-200: #933d28;
+    --color-surface-mixed-300: #a35540;
+    --color-surface-mixed-400: #b26c58;
+    --color-surface-mixed-500: #c18472;
+    --color-surface-mixed-600: #ce9c8d;
+}
+
+
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column; /* Stack flex items vertically */
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: white;
+}
+
+/* Styling for the loading logo */
+
+.loading-logo {
+    width: 200px;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 50px;
+}
+
+/* Styling for the loading bar */
+
+.loading-bar {
+    width: 90%;
+    height: 20px;
+    background-color: #f2f2f2;
+    border-radius: 10px;
+}
+
+.progress-bar {
+    width: 0%;
+    height: 100%;
+    background-color: var(--color-surface-mixed-100);
+    border-radius: 10px;
+}
+
+/* Styling for the loading text */
+
+.loading-text {
+    margin-top: 10px;
+    font-size: 18px;
+    text-align: center;
+}
