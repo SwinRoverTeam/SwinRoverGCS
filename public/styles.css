@@ -19,9 +19,7 @@ body {
     height: 100vh;
     margin: 0; 
 }
-div {
-    background-color: var(--color-surface-mixed-200);
-}
+
 /* Set the text color to red */
 h1, p {
     color: white;
@@ -42,7 +40,11 @@ a:hover {
 /* Topbar */
 .topbar {
     background-color: var(--color-surface-mixed-300);
-    height: 50px;
+    height: 100px;
+    display: flex;
+    padding: 0 20px;
+    float: right;
+    clear: both;
 }
 /* Content area with sidebar and main content */
 .content {
@@ -53,12 +55,19 @@ a:hover {
 /* Sidebar */
 .sidebar {
     background-color: var(--color-surface-mixed-400);
-    width: 200px;
+    width: 100px;
+}
+.sidebar ul {
+    list-style-type: none;
+    padding: 0;
+}
+.sidebar li {
+    padding: 10px;
+    text-align: center;
 }
 
 /* Main content */
 .main {
-    background-color: var(--color-surface-mixed-500);
     flex-grow: 1;
     display: flex;
     flex-wrap: wrap;

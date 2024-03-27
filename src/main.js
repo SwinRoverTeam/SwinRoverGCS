@@ -1,4 +1,4 @@
-const { app, BrowserWindow } = require('electron');
+const { app, BrowserWindow, screen } = require('electron');
 const { autoUpdater } = require('electron-updater');
 const { ipcMain } = require('electron');
 const isDev = require('electron-is-dev');
@@ -6,9 +6,11 @@ const fs = require('fs');
 
 let mainWindow, loaderWindow;
 function createWindow() {
+    const { width, height } = screen.getPrimaryDisplay().workAreaSize;
+
     mainWindow = new BrowserWindow({
-        width: 1920,
-        height: 1080,
+        width: width,
+        height: height,
         webPreferences: {
             nodeIntegration: true
         }
