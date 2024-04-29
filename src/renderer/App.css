@@ -1,0 +1,12 @@
+/*
+ * @NOTE: Prepend a `~` to css file paths that are in your node_modules
+ *        See https://github.com/webpack-contrib/sass-loader#imports
+ */
+body {
+  background: linear-gradient(180deg, hsla(0, 83%, 65%, 1) 0%, hsla(30, 67%, 1%, 1) 100%, hsla(327, 67%, 74%, 1) 100%);
+  /* justify-content: center; 
+  justify-content: center;
+  align-items: center;
+  */
+  overflow: hidden;
+}
