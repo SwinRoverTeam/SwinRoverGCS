@@ -1,7 +1,7 @@
 import React from 'react';
 import Card from '@mui/joy/Card';
 import { Grid } from '@mui/joy';
-
+import PayloadControls from './payloads/PayloadControls';
 export default function Payloads(){
     return (
         <Grid
@@ -9,8 +9,8 @@ export default function Payloads(){
         sx={{
           display: 'grid',
           gridTemplateAreas: {
-            xs: `"personal" "bio" "portfolio"`,
-            md: `"personal bio" "portfolio portfolio"`
+            xs: `"3dWindow" "controls" `,
+            md: `"3dWindow controls" `
           },
           gridTemplateColumns: { md: '1fr 1fr' },
           gridTemplateRows: { md: '1fr 1fr 1fr' }, 
@@ -21,20 +21,21 @@ export default function Payloads(){
         }}
       >
         <Card sx={{ 
-           gridArea: 'personal' ,
+           gridArea: '3dWindow' ,
           position: 'absolute', // Add this line
           left: 140, // Add this line
-          width: '40%', // Add this line
+          width: '45%', // Add this line
           height: '55%', // Add this line
         }}>
         </Card>
         <Card sx={{ 
-           gridArea: 'bio' ,
+           gridArea: 'controls' ,
           position: 'absolute', // Add this line
           right: 0, // Add this line
           width: '45%', // Add this line
           height: '55%', // Add this line
         }}>
+          <PayloadControls/>
         </Card>
       </Grid>
     )
