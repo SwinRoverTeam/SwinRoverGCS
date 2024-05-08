@@ -11,7 +11,7 @@ import MainContent from './components/Content';
 
 function Pilot() {
   return (
-    <CssVarsProvider disableTransitionOnChange>
+    <CssVarsProvider defaultMode='dark'>
       <CssBaseline />
       <Box sx={{ display: 'flex', minHeight: '100dvh' }}>
         <Sidebar />
@@ -38,7 +38,7 @@ function Pilot() {
 }
 function Engineer() {
   return (
-    <CssVarsProvider disableTransitionOnChange>
+    <CssVarsProvider defaultMode='dark'>
       <CssBaseline />
       <Box sx={{ display: 'flex', minHeight: '100dvh' }}>
         <Sidebar />
@@ -65,7 +65,7 @@ function Engineer() {
 }
 function Payloads() {
   return (
-    <CssVarsProvider disableTransitionOnChange>
+    <CssVarsProvider defaultMode='dark'>
       <CssBaseline />
       <Box sx={{ display: 'flex', minHeight: '100dvh' }}>
         <Sidebar />

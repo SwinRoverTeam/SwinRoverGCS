@@ -4,9 +4,9 @@ import { autoUpdater } from 'electron-updater';
 import log from 'electron-log';;
 import { resolveHtmlPath } from '../main/util';
 import EventEmitter from 'events';
-
+import fs from 'fs';
 const isDevelopment = process.env.NODE_ENV === 'development';
-
+const Documents = app.getPath('documents');
 
 export default class AppUpdater extends EventEmitter{
     updater: any;
@@ -23,9 +23,29 @@ export default class AppUpdater extends EventEmitter{
     setTimeout(async () => {
       console.log('AppUpdater:ready');
       this.mainLoop();
-    }, 10000);
+    }, 5000);
   }
+  loadConfigs(){
+    this.loadWindow?.webContents.send('data', ['Loading Configs']);
+    const srtgcsPath = path.join(Documents, 'SRTGCS');
+    if (isDevelopment) {
+      if (!fs.existsSync(srtgcsPath)) {
+        console.log('AppUpdater:SRTGCS not found');
+        fs.mkdirSync(srtgcsPath);
+        
+      }
+      const configPath = path.join(srtgcsPath, 'configs');
+      if (!fs.existsSync(configPath)) {
+       
+        fs.mkdirSync(configPath);
+        fs.copyFileSync(path.join(__dirname, 'config.json'), path.join(configPath, 'upconfig.json'));
+      // ...
+      }
+    }
+    // ...
+}
   mainLoop(){
+    this.loadConfigs();
     this.loadWindow?.webContents.send('data', ['Checking for Updates']);
     
     this.updater.on('update-available', () => {
@@ -51,8 +71,8 @@ export default class AppUpdater extends EventEmitter{
         this.updater.emit('update-available');
       
         let percent = 0;
+        this.loadWindow?.webContents.send('data', ['Downloading']);
         const intervalId = setInterval(() => {
-          this.loadWindow?.webContents.send('data', ['Downloading']);
           if (percent <= 100) {
             this.updater.emit('download-progress', { percent });
             percent++;
@@ -77,39 +97,14 @@ export default class AppUpdater extends EventEmitter{
     }
   }
   async closeWindow(){
+    console.log('AppUpdater:closeWindow');
     this.loadWindow?.close();
   }
   window(){
-      if (process.env.NODE_ENV === 'production') {
-        const sourceMapSupport = require('source-map-support');
-        sourceMapSupport.install();
-      }
-      
-      const isDebug =
-        process.env.NODE_ENV === 'development' || process.env.DEBUG_PROD === 'true';
-      
-      if (isDebug) {
+      if (isDevelopment) {
         require('electron-debug')();
       }
-      
-      const installExtensions = async () => {
-        const installer = require('electron-devtools-installer');
-        const forceDownload = !!process.env.UPGRADE_EXTENSIONS;
-        const extensions = ['REACT_DEVELOPER_TOOLS'];
-      
-        return installer
-          .default(
-            extensions.map((name) => installer[name]),
-            forceDownload,
-          )
-          .catch(console.log);
-      };
-      
       const createWindow = async () => {
-        if (isDebug) {
-          await installExtensions();
-        }
-      
         const RESOURCES_PATH = app.isPackaged
           ? path.join(process.resourcesPath, 'assets')
           : path.join(__dirname, '../../assets');
@@ -138,6 +133,7 @@ export default class AppUpdater extends EventEmitter{
             throw new Error('"loadWindow" is not defined');
           }
           this.loadWindow.show();
+          this.loadWindow.webContents.openDevTools();
           this.loadWindow.focus();
         });
       

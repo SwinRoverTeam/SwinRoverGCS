@@ -15,6 +15,9 @@ import { Link } from 'react-router-dom';
 import SRT from '../../../assets/SRT2.png';
 import Drawer from '@mui/joy/Drawer';
 import Setting from './Setting';
+import ColorSchemeToggle from './colortoggle';
+import IconButton from '@mui/joy/IconButton';
+import BrightnessAutoRoundedIcon from '@mui/icons-material/BrightnessAutoRounded';
 
 
 export default function Sidebar() {
@@ -37,9 +40,6 @@ export default function Sidebar() {
       sx={{ width: 250, 
         zIndex: 9999,
        position: 'relative',}}
-      role="presentation"
-      onClick={toggleSettings(false)}
-      onKeyDown={toggleSettings(false)}
       
     >
      <Setting />
@@ -59,7 +59,7 @@ export default function Sidebar() {
         height: '100dvh',
         width: 'var(--Sidebar-width)',
         top: 0,
-        p: 2,
+        p: 1,
         flexShrink: 0,
         display: 'flex',
         flexDirection: 'column',
@@ -81,6 +81,7 @@ export default function Sidebar() {
       <Box sx={{ display: 'flex', gap: 0, alignItems: 'center' }}>
       <img src={SRT} alt="My Image" style={{ width: '100px', height: '100px' }} /> 
       </Box>
+      
       <Box
         sx={{
           minHeight: 0,
@@ -144,6 +145,7 @@ export default function Sidebar() {
             mb: 2,
           }}
         >
+          <ColorSchemeToggle sx={{ ml: 'auto' }} />
           <ListItem>
             <ListItemButton onClick={toggleSettings(true)}>
               <SettingsRoundedIcon />

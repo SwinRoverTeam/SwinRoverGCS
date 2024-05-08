@@ -12,16 +12,10 @@ import Card from '@mui/joy/Card';
 
 
 export default function OverStats() {
-    return  <Grid container spacing={2} sx={{
-        display: 'grid',
-        gridTemplateColumns: { md: '1fr 1fr' },
-        
-        height: '100%',
-      }}>
-      <Card sx={{py: 1}}>              
+    return (             
           <Grid container spacing={2} sx={{
             display: 'grid',
-            gridTemplateColumns: { md: '1fr 1fr' },
+            gridTemplateColumns: { md: '1fr 1fr 1fr 1fr' },
             gridTemplateRows: { md: '1fr 1fr' },
             height: '100%',
             my: 0
@@ -77,19 +71,23 @@ export default function OverStats() {
                   <tbody>
                     <tr>
                       <td>FR:</td>
+                      <td>18V</td>
                       <td>2A</td>
                     </tr>
                     <tr>
                       <td>FL:</td>
-                      <td>3A</td>
+                      <td>18V</td>
+                      <td>2A</td>
                     </tr>
                     <tr>
                       <td>RR:</td>
+                      <td>18V</td>
                       <td>2A</td>
                     </tr>
                     <tr>
                       <td>RL:</td>
-                      <td>3A</td>
+                      <td>18V</td>
+                      <td>2A</td>
                     </tr>
                     </tbody>
                 </Table>
@@ -102,111 +100,81 @@ export default function OverStats() {
               <tbody>
                     <tr>
                       <td>FR:</td>
+                      <td>18V</td>
                       <td>2A</td>
                     </tr>
                     <tr>
                       <td>FL:</td>
-                      <td>3A</td>
+                      <td>18V</td>
+                      <td>2A</td>
                     </tr>
                     <tr>
                       <td>RR:</td>
+                      <td>18V</td>
                       <td>2A</td>
                     </tr>
                     <tr>
                       <td>RL:</td>
+                      <td>18V</td>
+                      <td>2A</td>
+                    </tr>
+                    </tbody>
+                </Table>
+            </Card>
+            <Card>
+              <Typography variant="h5" component="div">
+                Jetson
+              </Typography>
+              <Table>
+              <tbody>
+                    <tr>
+                      <td>CPU Load:</td>
+                      <td>20%</td>
+                    </tr>
+                    <tr>
+                      <td>Current Mode:</td>
+                      <td>1B</td>
+                    </tr>
+                    <tr>
+                      <td>Temp:</td>
+                      <td>50 C</td>
+                    </tr>
+                    <tr>
+                      <td>Current:</td>
                       <td>3A</td>
                     </tr>
                     </tbody>
                 </Table>
             </Card>
-          </Grid>
-      </Card>
-      <Card >
-        
-          <Typography variant="h5" component="div">
-            Drive Modes
-          </Typography>
-          <Table>
+            <Card>
+              <Typography variant="h5" component="div">
+                Payload
+              </Typography>
+              <Table>
               <tbody>
                     <tr>
-                      <td>Payload Mode</td>
-                      <td>
-                      <Select defaultValue="none">
-                        <Option value="none">None</Option>
-                        <Option value="armp">Arm</Option>
-                        <Option value="sci">Science</Option>
-                        <Option value="exc">Excavator</Option>
-                      </Select>
-                      </td>
+                      <td>Mode:</td>
+                      <td>Arm</td>
                     </tr>
                     <tr>
-                      <td>Power Mode</td>
-                      <td>
-                      <ToggleButtonGroup>
-                          <Button>Low</Button>
-                          <Button>Bal</Button>
-                          <Button>High</Button>
-                        </ToggleButtonGroup>
-                      </td>
+                      <td>Active:</td>
+                      <td>Sleep</td>
                     </tr>
                     <tr>
-                      <td>Autonomous Kill Switch</td>
-                      <td>
-                        <Switch sx={{my: 1}} />
-                        </td>
+                      <td>Temp:</td>
+                      <td>50 C</td>
                     </tr>
-                    
+                    <tr>
+                      <td>Current:</td>
+                      <td>3A</td>
+                    </tr>
                     </tbody>
                 </Table>
-                <Divider />
-                <Typography variant="h5" component="div">
-                  Motor Drive
-                </Typography>
-                <Table>
-                <tbody>
-                    <tr>
-                      <td>Torque Level</td>
-                      <td><Slider
-                      aria-label="Small steps"
-                      defaultValue={1}
-                      step={1}
-                      marks
-                      min={1}
-                      max={10}
-                      valueLabelDisplay="auto"
-                    /></td>
-                    </tr>
-                    <tr>
-                      <td>Steering Mode</td>
-                      <td>
-                        <ToggleButtonGroup>
-                          <Button>Crab</Button>
-                          <Button>FS</Button>
-                          <Button>Forklift</Button>
-                        </ToggleButtonGroup>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>Traction Control</td>
-                      <td>
-                        <ToggleButtonGroup>
-                          <Button>Enable</Button>
-                          <Button>Disable</Button>
-                        </ToggleButtonGroup>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>Full Boar</td>
-                      <td>
-                        <ToggleButtonGroup>
-                          <Button>Enable</Button>
-                          <Button>Disable</Button>
-                        </ToggleButtonGroup>
-                      </td>
-                    </tr>
-                    
-                    </tbody>
-                </Table>
-      </Card>
+            </Card>
+        <Card >
+        </Card>
+        <Card >
+        </Card>
       </Grid>
+    )
 }

@@ -120,10 +120,14 @@ app
   .whenReady()
   .then(() => {
     const VersionDrive = new AppUpdater();
-    VersionDrive.on('ready', () => {
-      createWindow();
+    VersionDrive.on('ready', async() => {
+      await createWindow();
       //VersionDrive.closeWindow();
       loaderActive = false;
+      mainWindow?.on('show', () => {
+        console.log('show');
+        VersionDrive.closeWindow();
+      });
       app.on('activate', () => {
         // On macOS it's common to re-create a window in the app when the
         // dock icon is clicked and there are no other windows open.

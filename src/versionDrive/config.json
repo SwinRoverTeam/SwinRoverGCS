@@ -1,0 +1,6 @@
+{
+    "version": "1.0.0",
+    "updateUrl": "https://example.com/update",
+    "updateInterval": 86400,
+    "autoUpdate": true
+}
