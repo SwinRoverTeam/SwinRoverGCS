@@ -161,6 +161,12 @@
       "node_modules",
       "package.json"
     ],
+    "publish": {
+      "provider": "github",
+      "owner": "SwinRoverTeam",
+      "repo": "SwinRoverTeam/SwinRoverGCS",
+      "releaseType": "draft"
+    },
     "afterSign": ".erb/scripts/notarize.js",
     "mac": {
       "target": {

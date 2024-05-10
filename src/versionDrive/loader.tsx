@@ -26,11 +26,14 @@ function Loading() {
   const progress = 50;
   const [message, setMessage] = useState('Starting Version Drive'); // Initialize state 
   const [number, setNumber] = useState(25);
+  const [version, setVersion] = useState('v0.0.0');
   useEffect(() => {
     window.electronLoader.ipcRenderer.on('data', (arg) => {
       if (Array.isArray(arg) && arg.length > 0) {
         if (arg[0] === 'dProgress') {
           setNumber(arg[1]);
+        } else if (arg[0] === 'version'){
+          setVersion('v' + arg[1]);
         } else{
           setMessage(arg[0]);
         }
@@ -50,6 +53,9 @@ function Loading() {
           {message}
         </Typography>
       </div>
+      <Typography  color="danger" align="center">
+        {version}
+      </Typography>
     </div>
   );
 }

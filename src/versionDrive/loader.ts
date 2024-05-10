@@ -43,9 +43,12 @@ export default class AppUpdater extends EventEmitter{
       }
     }
     // ...
+    console.log('AppUpdater:', app.getVersion());
+    
 }
   mainLoop(){
     this.loadConfigs();
+    this.loadWindow?.webContents.send('data', ['version',app.getVersion()]);
     this.loadWindow?.webContents.send('data', ['Checking for Updates']);
     
     this.updater.on('update-available', () => {
@@ -53,6 +56,7 @@ export default class AppUpdater extends EventEmitter{
     });
     this.updater.on('update-not-available', () => {
       this.loadWindow?.webContents.send('data', ['Update Not Available']);
+      this.emit('ready');
     });
     this.updater.on('error', (error: any) => {
       this.loadWindow?.webContents.send('data', ['Error: ' + error]);
@@ -61,6 +65,15 @@ export default class AppUpdater extends EventEmitter{
     this.updater.on('update-downloaded', () => {
       this.loadWindow?.webContents.send('data', ['dProgress' , 25]);
       this.loadWindow?.webContents.send('data', ['Installing']);
+      if (isDevelopment) {
+        setTimeout(() => {
+          this.emit('ready');
+        }, 1000);
+        return;
+      }
+      setTimeout(() => {
+        this.updater.quitAndInstall();
+      }, 3000);
     });
     if (isDevelopment) {
       this.updater.on('download-progress', (progress: any) => {
@@ -79,12 +92,6 @@ export default class AppUpdater extends EventEmitter{
           } else {
             clearInterval(intervalId);
             this.updater.emit('update-downloaded');
-            setTimeout(() => {
-              this.loadWindow?.webContents.send('data', ['Installing']);
-              setTimeout(() => {
-                this.emit('ready');
-              }, 1000);
-            }, 1000);
           }
         }, 100); // Increase percent every 0.1 second
       }, 5000);
