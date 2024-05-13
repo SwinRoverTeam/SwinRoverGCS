@@ -3,7 +3,7 @@ import { Canvas, useFrame, useThree } from '@react-three/fiber';
 import { Box, OrbitControls } from '@react-three/drei';
 import { Html } from '@react-three/drei';
 import { Typography } from '@mui/joy';
-import modelUrl from '../../../../assets/RoverCOmpressed.STL';
+import modelUrl from '../../../../assets/Rover2.stl';
 import { STLLoader } from 'three-stdlib';
 import { useLoader } from '@react-three/fiber';
 import { Suspense } from 'react';
@@ -36,7 +36,7 @@ function Model({ url }: { url: string }) {
   });
 
   return (
-      
+     
     <mesh ref={meshRef} geometry={geometry}>
       <meshBasicMaterial color={'#00ff00'} wireframe={true} />
       <Html position={[0, 0, 0]} fullscreen>

@@ -31,8 +31,7 @@ export default function Systems(){
           width: '45%', // Add this line
           height: '50%', // Add this line
         }}>
-          
-            <Threewin />
+          <Threewin />
         </Card>
         <Card sx={{ 
            gridArea: 'Stats' ,

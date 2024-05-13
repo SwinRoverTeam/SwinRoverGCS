@@ -40,6 +40,18 @@ const configuration: webpack.Configuration = {
           },
         ],
       },
+      {
+        test: /\.(stl)$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[name].[ext]',
+              outputPath: 'models/',
+            },
+          },
+        ],
+      },
     ],
   },
 
