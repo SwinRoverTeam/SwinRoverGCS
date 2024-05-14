@@ -32,6 +32,7 @@ function Loading() {
       if (Array.isArray(arg) && arg.length > 0) {
         if (arg[0] === 'dProgress') {
           setNumber(arg[1]);
+          setMessage('Downloading');
         } else if (arg[0] === 'version'){
           setVersion('v' + arg[1]);
         } else{

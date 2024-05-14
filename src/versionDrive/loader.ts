@@ -60,6 +60,7 @@ export default class AppUpdater extends EventEmitter{
     });
     this.updater.on('error', (error: any) => {
       this.loadWindow?.webContents.send('data', ['Error: ' + error]);
+      alert('Error: ' + error);
       this.emit('ready');
     });
     this.updater.on('update-downloaded', () => {
