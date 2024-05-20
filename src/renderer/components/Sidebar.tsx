@@ -145,7 +145,9 @@ export default function Sidebar() {
             mb: 2,
           }}
         >
-          <ColorSchemeToggle sx={{ ml: 'auto' }} />
+          <ListItem sx={{alignItems: 'center'}}>
+          <ColorSchemeToggle  />
+          </ListItem>
           <ListItem>
             <ListItemButton onClick={toggleSettings(true)}>
               <SettingsRoundedIcon />

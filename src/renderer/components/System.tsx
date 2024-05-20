@@ -29,9 +29,9 @@ export default function Systems(){
           position: 'absolute', // Add this line
           left: 140, // Add this line
           width: '45%', // Add this line
-          height: '50%', // Add this line
+          height: '50%', // Add this line <Threewin />
         }}>
-          <Threewin />
+          
         </Card>
         <Card sx={{ 
            gridArea: 'Stats' ,

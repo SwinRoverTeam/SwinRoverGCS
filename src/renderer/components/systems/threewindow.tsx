@@ -36,7 +36,6 @@ function Model({ url }: { url: string }) {
   });
 
   return (
-     
     <mesh ref={meshRef} geometry={geometry}>
       <meshBasicMaterial color={'#00ff00'} wireframe={true} />
       <Html position={[0, 0, 0]} fullscreen>

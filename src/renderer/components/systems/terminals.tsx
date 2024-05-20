@@ -1,4 +1,4 @@
-import { Divider, Grid, List, ListItem } from '@mui/joy';
+import { Divider, Grid, List, ListItem, Typography } from '@mui/joy';
 import { Box } from '@mui/system';
 import Card from '@mui/joy/Card';
 import Tabs from '@mui/joy/Tabs';
@@ -10,30 +10,22 @@ import Drive from './components/Drivetrain';
 import TerminalController from './components/Terminal';
 import Payload from './components/Payload';
 
-const commands = {
-  'greet': () => 'Hello, world!',
-  'date': () => new Date().toString(),
-  'default': () => 'Unidentified command executed',
-};
 
-const myCustomTheme = {
-  background: '#282c34',
-  promptSymbolColor: '#61dafb',
-  commandColor: '#61dafb',
-  outputColor: '#ffffff',
-};
 
 
 export default function Terminals() {
-
+    const handleTerminalInput = (input:string) => {
+      console.log(`You entered: ${input}`);
+    };
     return <Grid container spacing={2} sx={{
             display: 'grid',
             gridTemplateColumns: { md: '1fr 1fr' },
             height: '100%',
           }}>
       
-      <Card sx={{py: 1}}>   
-        <TerminalController />       
+      <Card sx={{py: 2, px: 3}}> 
+      <Typography level='title-lg'>Subsystem Terminal</Typography>
+        <TerminalController onInput={handleTerminalInput} />       
       </Card>
       <Card >
         <Tabs>
